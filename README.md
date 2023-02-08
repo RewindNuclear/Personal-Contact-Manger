@@ -7,7 +7,7 @@ A specialized personal contact manager for employees and staff members working a
 
 Each new user will need a login. If a user does not already own an account, a signup block will prompt up. If not, they can proceed to sign in. Each user will be able to add their own contacts in which they can delete, edit, and search for contacts.
 
-For this project I handled api endpoint testing, I helped code all of the php files and tested them all using arc and swaggerhub. For Swaggerhub I created the YAML used to test the API endpoints
+For this project I handled API endpoint testing, I helped code all of the php files and tested them all using arc and Swaggerhub. For Swaggerhub I created the YAML used to test the API endpoints.
 
 ## Contributors
 Project Manager - [Megan Carlson](https://github.com/meglc)
