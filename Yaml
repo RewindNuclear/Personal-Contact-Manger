@@ -1,0 +1,281 @@
+swagger: '2.0'
+info:
+  description: This is the API documentation for the COP 4331 Demo Contact Manager App
+  version: 1.0.0
+  title: Contactasaurus
+  # put the contact info for your development or API team
+  contact:
+    email: Richard.Leinecker@ucf.edu
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+paths:
+  /Login.php:
+    post:
+      tags:
+      - Users
+      summary: Logs into the Contact Manager
+      operationId: dlLogin
+      description: Logs in to colors app
+      consumes:
+      - applicatoin/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: loginItem
+        description: Login
+        schema:
+          $ref: '#/definitions/Login'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+   
+  /SearchContacts.php:
+    post:
+      tags:
+      - Search
+      summary: Searches Contacts
+      operationId: searchContacts
+      description: Searches contacts from the contact app database
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: searchItem
+        description: Contact Search
+        schema:
+          $ref: '#/definitions/Search'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+          
+  /Register.php:
+    post:
+      tags:
+      - Register
+      summary: Registers a user
+      operationId: RegisterUser
+      description: Registers a user to the user database
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Useritem
+        description: register
+        schema:
+          $ref: '#/definitions/Register'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found 
+        500:
+          description: Server Error
+  /CreateContacts.php:
+    post:
+      tags:
+      - Create
+      summary: Creates a Conctact
+      operationId: CreateContacts
+      description: Creates a Contact and adds to database
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Useritem
+        description: Contact
+        schema:
+          $ref: '#/definitions/Create'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found 
+        500:
+          description: Server Error
+  /DeleteContacts.php:
+    post:
+      tags:
+      - Delete
+      summary: Deletes a Conctact
+      operationId: DeleteContacts
+      description: Deletes a Contact from the database
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Useritem
+        description: Delete
+        schema:
+          $ref: '#/definitions/Delete'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found 
+        500:
+          description: Server Error
+  /UpdateContacts.php:
+    post:
+      tags:
+      - Update
+      summary: Updates a Conctact
+      operationId: UpdateContacts
+      description: Updates a Contact from the database
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Contacatitem
+        description: Update
+        schema:
+          $ref: '#/definitions/Update'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found 
+        500:
+          description: Server Error
+          
+          
+    
+definitions:
+  Login:
+    type: object
+    required:
+    - login
+    - password
+    properties:
+      login:
+        type: string
+        example: "CharlieB"
+      password:
+        type: string
+        example: "Charlieistheman"
+  Search:
+    type: object
+    required:
+    - userId
+    - search
+    properties:
+      userId:
+        type: integer
+        example: 1
+      search:
+        type: string
+        example: "bl"
+  Register:
+    type: object
+    required:
+    - firstName 
+    - lastName
+    - login
+    - password
+    properties:
+      firstName:
+        type: string
+        example: "charlie"
+      lastName:
+        type: string
+        example: "brown"
+      login:
+        type: string
+        example: "CharlieB"
+      password: 
+        type: string
+        example: "Charlieistheman"
+  Create:
+    type: object
+    required:
+    - firstName
+    - lastName
+    - phoneNumber
+    - emailAddress
+    - userId
+    properties:
+      firstName: 
+        type: string
+        example: "tricera"
+      lastName:
+        type: string
+        example: "tops"
+      phoneNumber:
+        type: string
+        example: "3333333333"
+      emailAddress:
+        type: string
+        example: "triceratops3@gmail.com"
+      userId:
+        type: integer
+        example: 2
+  Delete:
+    type: object
+    required:
+    - firstName
+    - lastName
+    - userId
+    properties:
+      firstName: 
+        type: string
+        example: "tricera"
+      lastName:
+        type: string
+        example: "tops"
+      userId:
+        type: integer
+        example: 2
+  Update:
+    type: object
+    required:
+    - newFirstName
+    - newLastName
+    - phoneNumber
+    - emailAddress
+    - id
+    properties:
+      newFirstName: 
+        type: string
+        example: "Fred"
+      newLastName:
+        type: string
+        example: "traps"
+      phoneNumber:
+        type: string
+        example: "1234567890"
+      emailAddress:
+        type: string
+        example: "Fredlvstraps@gmail.com"
+      id:
+        type: integer
+        example: 2
+         
+      
+    
+  
+
+host: contactasaurus.com
+basePath: /LAMPAPI
+schemes:
+- http
